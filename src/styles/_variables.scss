@@ -1,0 +1,98 @@
+// ============================================
+// KARAM SAMER PORTFOLIO — SCSS VARIABLES
+// Design tokens & reusable values
+// ============================================
+
+// ──────────────────────────────────────────────
+// Colors
+// ──────────────────────────────────────────────
+$color-primary:        #4D9FFF;
+$color-primary-rgb:    77, 159, 255;
+$color-accent:         #80BFFF;
+$color-bg:             #080B14;
+$color-surface:        #0D1526;
+$color-surface-2:      #111D35;
+$color-text:           #E8F0FF;
+$color-text-secondary: #7B93B8;
+$color-border:         #1A2A45;
+
+// Syntax highlighting (terminal / code)
+$color-keyword:  #C678DD;
+$color-variable: #E06C75;
+$color-property: #E5C07B;
+$color-string:   #98C379;
+$color-bracket:  #56B6C2;
+
+// Terminal dots
+$color-dot-red:    #FF5F57;
+$color-dot-yellow: #FEBC2E;
+$color-dot-green:  #28C840;
+
+// Danger / error
+$color-danger: #E06C75;
+$color-danger-hover: #e74c3c;
+
+// ──────────────────────────────────────────────
+// Typography
+// ──────────────────────────────────────────────
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono:   'Courier New', Consolas, monospace;
+
+// Font weights
+$fw-light:     300;
+$fw-regular:   400;
+$fw-medium:    500;
+$fw-semibold:  600;
+$fw-bold:      700;
+$fw-extrabold: 800;
+$fw-black:     900;
+
+// ──────────────────────────────────────────────
+// Spacing
+// ──────────────────────────────────────────────
+$section-padding:        80px;
+$section-padding-mobile: 60px;
+
+// ──────────────────────────────────────────────
+// Border radius
+// ──────────────────────────────────────────────
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-pill: 50px;
+
+// ──────────────────────────────────────────────
+// Shadows & glows
+// (Runtime values — defined as CSS custom properties in _global.scss :root)
+// Use var(--glow), var(--glow-strong), var(--glow-subtle) in stylesheets
+// ──────────────────────────────────────────────
+
+// ──────────────────────────────────────────────
+// Transitions
+// ──────────────────────────────────────────────
+$transition: 0.3s ease;
+
+// ──────────────────────────────────────────────
+// Breakpoints
+// ──────────────────────────────────────────────
+$bp-xs: 576px;
+$bp-sm: 768px;
+$bp-md: 991px;
+$bp-lg: 1200px;
+$bp-xl: 1300px;
+
+// ──────────────────────────────────────────────
+// Z-index layers
+// ──────────────────────────────────────────────
+$z-base:    1;
+$z-content: 2;
+$z-navbar:  1000;
+$z-modal:   9999;
+$z-overlay: 10000;
+
+// ──────────────────────────────────────────────
+// Layout
+// ──────────────────────────────────────────────
+$navbar-height: 70px;
+$container-max: 1140px;

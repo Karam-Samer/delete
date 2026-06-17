@@ -1,0 +1,98 @@
+<section id="hero" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <!-- Left Content -->
+      <div class="col-lg-6 hero-content">
+        <div class="fade-in-up">
+          <p class="greeting">Hi, I'm</p>
+          <h1 class="hero-name">Karam Samer</h1>
+          <div class="typewriter-wrapper">
+            <span class="typewriter-text">{{ displayText() }}</span>
+            <span class="cursor" [class.blink]="isBlinking()">|</span>
+          </div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary-glow" (click)="scrollTo($event, 'contact')">
+              <i class="fa-solid fa-envelope"></i>
+              Contact Me
+            </a>
+            <a href="assets/Karam-Samer-CV.pdf" class="btn-outline-glow" target="_blank" rel="noopener noreferrer"
+              download>
+              <i class="fa-solid fa-download"></i>
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Terminal -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="terminal fade-in-up" style="animation-delay: 0.3s;">
+          <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">portfolio.ts</span>
+          </div>
+          <div class="terminal-body">
+            <div class="code-line">
+              <span class="line-number">1</span>
+              <span class="keyword">const</span>
+              <span class="variable"> developer</span>
+              <span class="operator"> = </span>
+              <span class="bracket">&#123;</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">2</span>
+              <span class="property"> name</span>
+              <span class="operator">: </span>
+              <span class="string">"Karam Samer"</span>
+              <span class="operator">,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">3</span>
+              <span class="property"> role</span>
+              <span class="operator">: </span>
+              <span class="string">"Frontend Developer"</span>
+              <span class="operator">,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">4</span>
+              <span class="property"> location</span>
+              <span class="operator">: </span>
+              <span class="string">"Cairo, Egypt"</span>
+              <span class="operator">,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">5</span>
+              <span class="property"> skills</span>
+              <span class="operator">: </span>
+              <span class="bracket">[</span>
+              <span class="string">"Angular"</span>
+              <span class="operator">, </span>
+              <span class="string">"TS"</span>
+              <span class="operator">, </span>
+              <span class="string">"ML"</span>
+              <span class="bracket">]</span>
+              <span class="operator">,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">6</span>
+              <span class="property"> passion</span>
+              <span class="operator">: </span>
+              <span class="string">"Building the future"</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">7</span>
+              <span class="bracket">&#125;</span>
+              <span class="operator">;</span>
+              <span class="terminal-cursor">▋</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background decoration -->
+  <div class="hero-bg-glow"></div>
+</section>

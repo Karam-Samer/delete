@@ -1,0 +1,39 @@
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">WHERE I STUDIED</span>
+      <h2 class="section-title">Education</h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="education-container">
+      @for (edu of educationList; track edu.degree) {
+      <div class="education-card card-glow fade-in-up">
+        <div class="education-icon-wrapper">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="education-details">
+          <div class="education-header">
+            <div class="education-title-group">
+              <h3 class="edu-degree">{{ edu.degree }}</h3>
+              <p class="edu-university">{{ edu.university }}</p>
+            </div>
+            <span class="status-badge">{{ edu.status }}</span>
+          </div>
+
+          <div class="edu-meta">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>{{ edu.period }}</span>
+          </div>
+
+          <div class="edu-tags">
+            @for (tag of edu.tags; track tag) {
+            <span class="edu-pill">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

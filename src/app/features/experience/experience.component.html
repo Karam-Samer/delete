@@ -1,0 +1,109 @@
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">WHAT I'VE DONE</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="timeline">
+      @for (exp of experiences; track exp.title; let i = $index) {
+      <div class="timeline-item">
+        <!-- Timeline dot -->
+        <div class="timeline-dot" [class.current]="exp.isCurrent"></div>
+
+        <!-- Card -->
+        <div class="timeline-card card-glow fade-in-up" 
+             [class.accordion-item]="isMobile()"
+             [class.accordion-open]="isExpanded(i)"
+             [style.animation-delay]="(i * 0.15) + 's'">
+          <div class="card-header" [class.clickable]="isMobile()" (click)="toggleAccordion(i)">
+            <div class="card-titles">
+              <h3 class="exp-title">{{ exp.title }}</h3>
+              <p class="exp-company">{{ exp.company }}</p>
+            </div>
+            <div class="header-right">
+              @if (exp.isCurrent) {
+              <span class="current-badge">Current</span>
+              }
+              @if (isMobile()) {
+              <span class="accordion-toggle-btn">
+                <i class="fa-solid fa-chevron-down" [class.rotated]="isExpanded(i)"></i>
+              </span>
+              }
+            </div>
+          </div>
+
+          <!-- Accordion Content (CSS Grid wrapper for smooth expansion animation) -->
+          <div class="accordion-wrapper" [class.expanded]="isExpanded(i)">
+            <div class="accordion-content">
+              <div class="exp-meta">
+                <!-- Period -->
+                <span class="exp-meta-item">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  {{ exp.period }}
+                </span>
+                <!-- Location -->
+                <span class="exp-meta-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  {{ exp.location }}
+                </span>
+              </div>
+
+              <ul class="exp-points">
+                @for (point of exp.points; track point) {
+                <li>{{ point }}</li>
+                }
+              </ul>
+
+              <div class="exp-tags">
+                @for (tag of exp.tags; track tag) {
+                <span class="exp-pill">{{ tag }}</span>
+                }
+              </div>
+
+              <!-- Certificate -->
+              @if (exp.certificate) {
+              <div class="certificate-area">
+                <div class="certificate-divider"></div>
+                <span class="certificate-label">
+                  <i class="fas fa-certificate"></i> Certificate
+                </span>
+                <div class="certificate-preview" (click)="openLightbox(exp.certificate, exp.title); $event.stopPropagation()">
+                  <img
+                    [src]="exp.certificate"
+                    [alt]="exp.title + ' Certificate'"
+                    class="certificate-img"
+                  />
+                  <div class="certificate-overlay">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Certificate</span>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Popup -->
+@if (lightboxOpen()) {
+<div class="lightbox-overlay" (click)="onOverlayClick($event)">
+  <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close lightbox">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="lightbox-content">
+    <img
+      [src]="lightboxImage()"
+      [alt]="lightboxTitle() + ' Certificate'"
+      class="lightbox-img"
+    />
+    <p class="lightbox-caption">{{ lightboxTitle() }} — Certificate</p>
+  </div>
+</div>
+}

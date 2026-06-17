@@ -1,0 +1,68 @@
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">WHAT I KNOW</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="skills-panel">
+      <!-- Toggle Switcher -->
+      <div class="toggle-wrapper">
+        <div class="toggle-switcher">
+          <button
+            #frontendBtn
+            class="toggle-btn"
+            [class.active]="activeCategory() === 'frontend'"
+            (click)="setCategory('frontend')"
+          >
+            Frontend
+          </button>
+          <button
+            #mlBtn
+            class="toggle-btn"
+            [class.active]="activeCategory() === 'ml'"
+            (click)="setCategory('ml')"
+          >
+            ML &amp; Data Science
+          </button>
+          <button
+            #fundamentalsBtn
+            class="toggle-btn"
+            [class.active]="activeCategory() === 'fundamentals'"
+            (click)="setCategory('fundamentals')"
+          >
+            CS Fundamentals
+          </button>
+          <button
+            #toolsBtn
+            class="toggle-btn"
+            [class.active]="activeCategory() === 'tools'"
+            (click)="setCategory('tools')"
+          >
+            Tools &amp; Tech
+          </button>
+          <div
+            class="toggle-indicator"
+            [style.width.px]="indicatorWidth()"
+            [style.transform]="'translateX(' + indicatorLeft() + 'px)'"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Skills Pills -->
+      <div class="skills-container" [@fadeSwitch]="activeCategory()">
+        <div class="skills-grid">
+          @for (skill of currentSkills(); track skill.name) {
+            <span class="skill-pill" [style.--skill-color]="skill.color || 'var(--color-primary)'">
+              @if (skill.icon) {
+                <i [class]="skill.icon" [style.color]="skill.color || 'var(--color-primary)'"></i>
+              }
+              {{ skill.name }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

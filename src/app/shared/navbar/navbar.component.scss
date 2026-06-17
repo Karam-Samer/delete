@@ -1,0 +1,47 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(8, 11, 20, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  min-height: var(--navbar-height);
+  z-index: 1000;
+
+  .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.logo {
+  font-weight: 800;
+  color: var(--color-primary) !important;
+}
+
+.nav-link {
+  color: var(--color-text-secondary) !important;
+  position: relative;
+  transition: 0.3s;
+
+  &.active {
+    color: var(--color-primary) !important;
+  }
+
+  &:hover {
+    color: var(--color-text) !important;
+  }
+}
+
+/* Bootstrap collapse mobile styling optional */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: rgba(8, 11, 20, 0.95);
+    padding: 12px;
+    border-radius: 10px;
+  }
+}
+.navbar-toggler-icon {
+  filter: invert(1);
+}

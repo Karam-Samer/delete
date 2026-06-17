@@ -1,0 +1,22 @@
+// ============================================
+// KARAM SAMER PORTFOLIO — MAIN STYLESHEET
+// Entry point — imports all partials
+// ============================================
+
+// 1. Variables (SCSS tokens — no CSS output)
+@use './styles/variables' as *;
+
+// 2. Mixins (reusable logic — no CSS output)
+@use './styles/mixins' as *;
+
+// 3. Global base styles (reset, body, typography)
+@use './styles/global';
+
+// 4. Animations (@keyframes & utility classes)
+@use './styles/animations';
+
+// 5. Utilities (section system, buttons, cards, helpers, modals)
+@use './styles/utilities';
+
+// Google Fonts — Inter (must come after @use rules per Sass spec)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');

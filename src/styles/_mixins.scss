@@ -1,0 +1,135 @@
+// ============================================
+// KARAM SAMER PORTFOLIO — SCSS MIXINS
+// Reusable style logic & helpers
+// ============================================
+
+@use 'variables' as *;
+
+// ──────────────────────────────────────────────
+// Responsive breakpoints
+// ──────────────────────────────────────────────
+@mixin respond($breakpoint) {
+  @if ($breakpoint == 350) {
+    @media (max-width: $bp-xl) { @content; }
+  }
+  @else if ($breakpoint == 450) {
+    @media (min-width: 371px) and (max-width: $bp-xl) { @content; }
+  }
+  @else if ($breakpoint == 650) {
+    @media (min-width: 577px) and (max-width: $bp-xl) { @content; }
+  }
+  @else if ($breakpoint == 850) {
+    @media (min-width: 769px) and (max-width: $bp-xl) { @content; }
+  }
+  @else if ($breakpoint == 1050) {
+    @media (min-width: 992px) and (max-width: $bp-xl) { @content; }
+  }
+  @else if ($breakpoint == 1200) {
+    @media (min-width: 1181px) and (max-width: $bp-xl) { @content; }
+  }
+}
+
+// ──────────────────────────────────────────────
+// Flexbox shorthand
+// ──────────────────────────────────────────────
+@mixin flex($al: center, $jc: center, $dir: row) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $al;
+  justify-content: $jc;
+}
+
+// ──────────────────────────────────────────────
+// Pseudo-element base
+// ──────────────────────────────────────────────
+@mixin createEle($w: 100%, $h: auto) {
+  content: "";
+  display: block;
+  width: $w;
+  height: $h;
+}
+
+// ──────────────────────────────────────────────
+// Positioning shorthand
+// ──────────────────────────────────────────────
+@mixin position($p: absolute, $t: initial, $r: initial, $b: initial, $l: initial) {
+  position: $p;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+
+// ──────────────────────────────────────────────
+// Width + Height shorthand
+// ──────────────────────────────────────────────
+@mixin distance($w: 100%, $h: initial) {
+  width: $w;
+  height: $h;
+}
+
+// ──────────────────────────────────────────────
+// Background image shorthand
+// ──────────────────────────────────────────────
+@mixin backgroundImg($img, $s: cover, $p: center, $r: no-repeat) {
+  background-image: url($img);
+  background-size: $s;
+  background-position: $p;
+  background-repeat: $r;
+}
+
+// ──────────────────────────────────────────────
+// Card base (glow card pattern)
+// ──────────────────────────────────────────────
+@mixin card-glow {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--glow);
+  }
+}
+
+// ──────────────────────────────────────────────
+// Button base
+// ──────────────────────────────────────────────
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: var(--font-family);
+  font-weight: $fw-semibold;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ──────────────────────────────────────────────
+// Hover lift effect
+// ──────────────────────────────────────────────
+@mixin hover-lift($distance: -2px) {
+  &:hover {
+    transform: translateY($distance);
+  }
+}
+
+// ──────────────────────────────────────────────
+// Pill / tag pattern
+// ──────────────────────────────────────────────
+@mixin pill {
+  display: inline-block;
+  border-radius: $radius-pill;
+  font-weight: $fw-medium;
+  transition: all var(--transition);
+  cursor: default;
+  user-select: none;
+}

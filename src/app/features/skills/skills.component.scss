@@ -1,0 +1,158 @@
+@use '../../../styles/mixins' as *;
+
+/* Skills Panel */
+.skills-panel {
+  background: #0D1526;
+  border: 1px solid #1A2A45;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 720px;
+  margin: 0 auto;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: var(--glow-subtle);
+  }
+
+  @include respond(350) {
+    padding: 20px 16px;
+  }
+
+  @include respond(650) {
+    padding: 40px;
+  }
+}
+
+/* Toggle */
+.toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.toggle-switcher {
+  display: inline-flex;
+  position: relative;
+  background: var(--color-bg);
+  border: 1px solid #1A2A45;
+  border-radius: 50px;
+  padding: 4px;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+.toggle-btn {
+  position: relative;
+  z-index: 2;
+  padding: 10px 28px;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: color var(--transition);
+  white-space: nowrap;
+
+  &.active {
+    color: #fff;
+  }
+
+  &:hover:not(.active) {
+    color: var(--color-text);
+  }
+
+  @include respond(350) {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  @include respond(650) {
+    padding: 10px 28px;
+    font-size: 0.92rem;
+  }
+}
+
+.toggle-indicator {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: calc(100% - 8px);
+  background: var(--color-primary);
+  border-radius: 50px;
+  transition: transform var(--transition), width var(--transition);
+  box-shadow: var(--glow);
+  z-index: 1;
+}
+
+/* Skills Grid */
+.skills-container {
+  min-height: 80px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+
+  @include respond(350) {
+    gap: 8px;
+  }
+
+  @include respond(650) {
+    gap: 12px;
+  }
+}
+
+/* Skill Pill */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #111D35;
+  border: 1px solid #1A2A45;
+  border-radius: 50px;
+  color: #7B93B8;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: all var(--transition);
+  cursor: default;
+  user-select: none;
+
+  i {
+    transition: transform var(--transition);
+  }
+
+  &:hover {
+    border-color: var(--skill-color);
+    color: #E8F0FF;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--skill-color) 30%, transparent);
+    transform: translateY(-2px);
+
+    i {
+      transform: scale(1.15);
+    }
+  }
+
+  @include respond(350) {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  @include respond(650) {
+    padding: 10px 24px;
+    font-size: 0.92rem;
+  }
+}

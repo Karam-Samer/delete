@@ -1,0 +1,146 @@
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">MY WORK</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="projects-controls">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search projects..." [value]="searchQuery()" (input)="onSearch($event)"
+          class="search-input" id="project-search" />
+      </div>
+
+      <div class="filter-tabs">
+        @for (tab of filterTabs(); track tab.key) {
+        <button class="filter-tab" [class.active]="activeFilter() === tab.key" (click)="setFilter(tab.key)">
+          {{ tab.label }}
+        </button>
+        }
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <div class="state-container">
+      <div class="spinner"></div>
+      <p>Loading projects...</p>
+    </div>
+    }
+
+    <!-- Error State -->
+    @if (hasError()) {
+    <div class="state-container">
+      <i class="fa-solid fa-circle-exclamation fa-3x" style="color: var(--color-primary); margin-bottom: 15px;"></i>
+      <p>Failed to load projects. Please try again later.</p>
+    </div>
+    }
+
+    <!-- Projects Grid -->
+    @if (!isLoading() && !hasError()) {
+    @if (filteredProjects().length === 0) {
+    <div class="state-container">
+      <i class="fa-solid fa-folder-open fa-3x" style="color: var(--color-primary); margin-bottom: 15px;"></i>
+      <p>No projects found</p>
+    </div>
+    } @else {
+    <div class="row g-4">
+      @for (project of filteredProjects(); track project.name) {
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card card-glow">
+          <div class="card-body">
+            <h3 class="project-name">{{ getCleanName(project.name) }}</h3>
+            <p class="project-desc" (click)="openModal(project)" title="Click to read full description">
+              {{ getCleanDescription(project.description) }}
+            </p>
+            @if (project.description) {
+              <div class="read-more-container" (click)="openModal(project)">
+                <span class="read-more-link">See More <i class="fa-solid fa-angle-right"></i></span>
+              </div>
+            }
+
+            @if (project.topics && project.topics.length > 0) {
+            <div class="project-topics">
+              @for (topic of project.topics; track topic) {
+              <span class="topic-tag">{{ topic }}</span>
+              }
+            </div>
+            }
+          </div>
+
+          <div class="card-footer">
+            <a [href]="project.html_url" target="_blank" rel="noopener noreferrer" class="btn-outline-glow btn-sm">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+            @if (project.homepage) {
+            <a [href]="project.homepage" target="_blank" rel="noopener noreferrer" class="btn-primary-glow btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    }
+    }
+  </div>
+
+  <!-- Project Details Modal -->
+  @if (selectedProject(); as project) {
+    <div class="modal fade show" tabindex="-1" style="display: block; background-color: rgba(8, 11, 20, 0.85); backdrop-filter: blur(8px);" role="dialog" (click)="closeModal()">
+      <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
+        <div class="project-modal-content card-glow">
+          <button type="button" class="modal-close-btn" (click)="closeModal()" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          
+          <div class="modal-body-custom">
+            <div class="modal-header-custom">
+              <span class="modal-label">PROJECT DETAILS</span>
+              <h2 class="modal-title glow-text">{{ getCleanName(project.name) }}</h2>
+              <div class="modal-underline"></div>
+            </div>
+
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fa-solid fa-align-left text-primary-color me-2"></i>About the Project</h4>
+              <p class="modal-desc" style="white-space: pre-wrap;">{{ getCleanDescription(project.description) }}</p>
+            </div>
+
+            @if (project.topics && project.topics.length > 0) {
+              <div class="modal-section">
+                <h4 class="modal-section-title"><i class="fa-solid fa-laptop-code text-primary-color me-2"></i>Tech Stack</h4>
+                <div class="modal-tags">
+                  @for (topic of project.topics; track topic) {
+                    <span class="modal-pill">{{ topic }}</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="modal-footer-custom">
+            <div class="modal-actions">
+              <a [href]="project.html_url" target="_blank" rel="noopener noreferrer" class="btn-outline-glow btn-sm">
+                <i class="fa-brands fa-github fa-lg"></i>
+                GitHub Repo
+              </a>
+              @if (project.homepage) {
+                <a [href]="project.homepage" target="_blank" rel="noopener noreferrer" class="btn-primary-glow btn-sm">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+              }
+            </div>
+            <button type="button" class="btn-close-text" (click)="closeModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>

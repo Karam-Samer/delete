@@ -1,0 +1,43 @@
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">WHO I AM</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Bio + Stats -->
+      <div class="col-12">
+        <div class="about-text fade-in-up">
+          <p>
+            I'm a <strong>Computer Science &amp; AI</strong> student at Helwan University,
+            passionate about crafting beautiful, performant web experiences and diving deep
+            into the world of <strong>Machine Learning</strong> and <strong>Data Science</strong>.
+          </p>
+          <p>
+            Currently enrolled in the <strong>GCI program at the University of Tokyo</strong>,
+            I combine my frontend development expertise with a growing foundation in AI/ML
+            to build innovative solutions. I love turning complex problems into clean,
+            intuitive interfaces.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies, contributing to
+            open-source projects, and continuously expanding my skill set.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="stats-grid fade-in-up" style="animation-delay: 0.2s;">
+          @for (stat of stats(); track stat.label) {
+          <div class="stat-card card-glow">
+            <span class="stat-number">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
